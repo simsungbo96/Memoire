@@ -7,35 +7,19 @@
     tools:context=".activity.MainActivity">
 
 
-   <androidx.viewpager2.widget.ViewPager2
-       android:id="@+id/top_viewpager2"
+   <FrameLayout
+       android:id="@+id/main_frameLayout"
        android:layout_width="match_parent"
-       android:layout_height="300dp"
+       android:layout_height="0dp"
+       app:layout_constraintBottom_toTopOf="@+id/mainAct_bottomNaviView"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent" >
+       app:layout_constraintTop_toTopOf="parent">
 
-   </androidx.viewpager2.widget.ViewPager2>
-
-   <com.google.android.material.tabs.TabLayout
-       android:id="@+id/tabLayout"
-       android:layout_width="wrap_content"
-       android:layout_height="50dp"
-       app:layout_constraintEnd_toEndOf="@+id/top_viewpager2"
-       app:layout_constraintStart_toStartOf="@+id/top_viewpager2"
-       app:layout_constraintTop_toBottomOf="@+id/top_viewpager2"
-       app:tabBackground="@drawable/tab_selector"
-       app:tabGravity="center"
-       app:tabIndicatorHeight="0dp" />
-
-   <Space
-       android:layout_width="match_parent"
-       android:layout_height="88dp"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+   </FrameLayout>
 
    <com.google.android.material.bottomnavigation.BottomNavigationView
+       android:id="@+id/mainAct_bottomNaviView"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        app:menu="@menu/bottom_nav"

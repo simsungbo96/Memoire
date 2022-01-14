@@ -3,10 +3,13 @@
     <item android:id="@+id/action_home"
         android:title="홈"
         android:icon="@drawable/ic_home_24_black"/>
-    <item android:id="@+id/action_chat"
+    <item android:id="@+id/action_edit"
         android:title="작성"
         android:icon="@drawable/ic_edit_24_black"/>
-    <item android:id="@+id/action_my"
+    <item android:id="@+id/action_share"
+        android:title="공유"
+        android:icon="@drawable/ic_share_24_black"/>
+    <item android:id="@+id/action_set"
         android:title="설정"
         android:icon="@drawable/ic_set_24_black"/>
 </menu>
