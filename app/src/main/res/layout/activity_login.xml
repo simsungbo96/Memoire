@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.237" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/login_et_id"
         android:layout_width="280dp"
         android:layout_height="53dp"
         android:layout_marginTop="52dp"
@@ -46,27 +46,26 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/login_et_password"
         android:layout_width="280dp"
         android:layout_height="55dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintEnd_toEndOf="@+id/login_et_id"
+        app:layout_constraintStart_toStartOf="@+id/login_et_id"
+        app:layout_constraintTop_toBottomOf="@+id/login_et_id" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/login_btn_login"
         android:layout_width="272dp"
         android:layout_height="52dp"
-        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/black"
         android:text="로그인"
         android:textAllCaps="false"
-        android:backgroundTint="@color/black"
         app:iconTint="#201919"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword3"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintEnd_toEndOf="@+id/login_et_password"
+        app:layout_constraintStart_toStartOf="@+id/login_et_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_et_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
