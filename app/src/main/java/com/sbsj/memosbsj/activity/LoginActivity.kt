@@ -9,42 +9,41 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sbsj.memosbsj.R
 
 
 class LoginActivity : AppCompatActivity() {
+    lateinit var loginBtn : Button
+    lateinit var id :EditText
+    lateinit var password :EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val loginBtn : Button = findViewById(R.id.login_btn_login)
-        var id :EditText= findViewById(R.id.login_et_id)
-        var password :EditText= findViewById(R.id.login_et_password)
+        init()
+    }
+    fun init(){
+        loginBtn  = findViewById(R.id.login_btn_login)
+        id = findViewById(R.id.login_et_id)
+        password = findViewById(R.id.login_et_password)
         loginBtn.setOnClickListener {
-            login(id.text.toString(),password.text.toString())
+            logIn(id.text.toString(),password.text.toString())
         }
     }
 
-
-    fun init(){
-
-    }
-    fun login(id :String , password :String){
-
-        if(id=="1" && password=="1")
-        {
+   /* 로그인 함수*/
+    fun logIn(id :String , password :String){
+        if(id=="1"){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-
-
         }
         else{
              Toast.makeText(this,"아이디 비밀번호를 다시입력해주세요.",Toast.LENGTH_SHORT).show()
         }
-
-
     }
+
 }
 
 

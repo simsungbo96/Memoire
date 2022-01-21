@@ -60,10 +60,12 @@
         android:id="@+id/login_btn_login"
         android:layout_width="272dp"
         android:layout_height="52dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/black"
         android:text="로그인"
         android:textAllCaps="false"
         app:iconTint="#201919"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login_et_password"
         app:layout_constraintStart_toStartOf="@+id/login_et_password"
         app:layout_constraintTop_toBottomOf="@+id/login_et_password" />
