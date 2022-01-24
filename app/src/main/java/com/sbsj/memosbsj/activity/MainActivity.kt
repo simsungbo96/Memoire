@@ -38,23 +38,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavViewCreate()
-
     }
 
     override fun onRestart() {
         super.onRestart()
 
+
     }
     override fun onBackPressed() {
         exitApp()
     }
-
-
-
-
-
-
-
 
 
     /*바텀 네비게이션뷰 생성 */

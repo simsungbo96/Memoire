@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:background="@drawable/square_title_list_box"
+        android:id="@+id/writtenList_ll"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:background="@drawable/square_title_list_box"
         android:orientation="vertical"
         android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,23 +16,23 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_margin="10dp"
+            android:id="@+id/writtenList_ll_tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="2"
             android:text="제목입니당!"
             android:textColor="#150000"
             android:textSize="20dp" />
 
         <TextView
-            android:layout_margin="10dp"
-            android:id="@+id/textView5"
+            android:id="@+id/writtenList_ll_tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:text="2022년 1월 21일"
-            android:textColor="#150000"
-            android:textAlignment="viewEnd" />
+            android:textAlignment="viewEnd"
+            android:textColor="#150000" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
