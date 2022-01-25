@@ -22,9 +22,7 @@ class ReadActivity : AppCompatActivity() {
         activityReadBinding.lifecycleOwner =this
         setContentView(activityReadBinding.root)
 
-        viewModel.readOneData(0).let {
-            activityReadBinding.readTitleTv.text = it.toString()
-        }
+        viewModel.getData(0)
 
 
 

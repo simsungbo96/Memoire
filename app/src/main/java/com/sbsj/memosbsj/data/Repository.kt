@@ -29,7 +29,7 @@ class Repository(mDatabase: AppDatabase) {
     suspend fun deleteAll(writtenData: WrittenData){
         dao.deleteAll()
     }
-    suspend fun read(order: Int) : String {
+    fun read(order: Int) : LiveData<WrittenData> {
         return dao.searchOne(order)
     }
 //    suspend fun deleteAll(writtenData: WrittenData) {

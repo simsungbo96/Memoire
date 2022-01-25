@@ -27,6 +27,6 @@ interface WrittenDao {
 
     //해당데이터 읽기
     @Query("SELECT title FROM memo_table where 'order' = :readOrder")
-    fun searchOne(readOrder: Int) : String
+    fun searchOne(readOrder: Int) : LiveData<WrittenData>
 
 }

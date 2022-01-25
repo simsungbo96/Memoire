@@ -33,8 +33,8 @@ import javax.inject.Inject
         Repository.deleteAll(writtenData)
     }
 
-    fun readOneData(order: Int)  = viewModelScope.launch(Dispatchers.IO) {
-        Repository.read(order)
+    fun getData(order: Int):LiveData<WrittenData>{
+        return Repository.read(order)
     }
 
 
