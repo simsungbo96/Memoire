@@ -13,30 +13,29 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sbsj.memosbsj.R
 import com.sbsj.memosbsj.adapter.WriteAdapter
 import com.sbsj.memosbsj.data.WrittenData
+import com.sbsj.memosbsj.databinding.ActivityWriteBinding
 import com.sbsj.memosbsj.fragment.EditFragment
 import com.sbsj.memosbsj.viewmodel.MainViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-lateinit var writeButton: Button
-lateinit var writtenTitle : EditText
 
 
 
 class WriteActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
-
+    private lateinit var activityWriteBinding : ActivityWriteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_write)
+        activityWriteBinding = ActivityWriteBinding.inflate(layoutInflater)
+        setContentView(activityWriteBinding.root)
 
-        writtenTitle = findViewById(R.id.write_title_et)
-        writeButton = findViewById(R.id.write_write_btn)
-
-        writeButton.setOnClickListener {
+         activityWriteBinding.writeWriteBtn.setOnClickListener {
             backMainActivity();
-
+        }
+        activityWriteBinding.writeCancelBtn.setOnClickListener {
+            finish()
         }
 
     }
@@ -44,7 +43,7 @@ class WriteActivity : AppCompatActivity() {
         var nowDate = System.currentTimeMillis()
         val convertNowDate = Date(nowDate)
         val printDate = SimpleDateFormat("yy년 MM월 dd일")
-        viewModel.insert(WrittenData(0, writtenTitle.text.toString(),printDate.format(convertNowDate)))
+        viewModel.insert(WrittenData(0, activityWriteBinding.writeTitleEt.text.toString(),printDate.format(convertNowDate)))
         finish()
     }
 

@@ -3,7 +3,6 @@
     package="com.sbsj.memosbsj">
 
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,16 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MemoSbsj">
         <activity
-            android:name=".activity.WriteActivity"
-            android:windowSoftInputMode="adjustResize"
+            android:name=".activity.ReadActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.WriteActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

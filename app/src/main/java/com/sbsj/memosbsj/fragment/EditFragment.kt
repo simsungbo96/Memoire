@@ -3,6 +3,7 @@ package com.sbsj.memosbsj.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,91 +16,66 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sbsj.memosbsj.R
 import com.sbsj.memosbsj.activity.MainActivity
+import com.sbsj.memosbsj.activity.ReadActivity
 import com.sbsj.memosbsj.activity.WriteActivity
 import com.sbsj.memosbsj.adapter.WriteAdapter
 import com.sbsj.memosbsj.data.WrittenData
 import com.sbsj.memosbsj.databinding.FragmentEditBinding
 import com.sbsj.memosbsj.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.scopes.FragmentScoped
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+@FragmentScoped
 class EditFragment : Fragment() {
-    lateinit var fabWrite : FloatingActionButton
-    lateinit var rvEdit : RecyclerView
-    lateinit var mainActivity: MainActivity
 
-    lateinit var writeAdapter: WriteAdapter
-    private val viewModel: MainViewModel by viewModels()
-    lateinit var binding: FragmentEditBinding
+    lateinit var mWriteAdapter :WriteAdapter
+    private var _binding: FragmentEditBinding? = null
+    // 매번 null 체크를 할 필요 없이 편의성을 위해 바인딩 변수 재 선언
+    private val binding get() = _binding!!
+    private val viewModel: MainViewModel by viewModels<MainViewModel>()
 
-    val datas = mutableListOf<WrittenData>()
-
-    fun newInstance() : EditFragment{
-        return EditFragment()
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding  = DataBindingUtil.inflate(inflater,R.layout.fragment_edit,container,false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit, container, false)
         activity?.let {
 
-            binding.viewModel =viewModel
+            binding.viewModel = viewModel
             binding.lifecycleOwner = this
         }
+        mWriteAdapter = WriteAdapter(requireContext(),viewModel)
 
+        binding.editRvWritten.apply {
+            adapter =mWriteAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+
+        binding.editFabWrite.setOnClickListener{
+            moveWriteActivity()
+        }
         return binding.root
 
 
-
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity =context as MainActivity
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val mWriteAdapter = WriteAdapter(requireContext(),viewModel)
-        binding.editRvWritten.apply {
-            adapter = mWriteAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-        viewModel.allWrittenData.observe(viewLifecycleOwner, androidx.lifecycle.Observer { datas->datas?.let { mWriteAdapter.setWrittenData(it) } })
-        fabWrite = view.findViewById(R.id.edit_fab_write)
-//        writeAdapter = WriteAdapter(mainActivity)
-//        rvEdit = view.findViewById(R.id.edit_rv_written)
-//        rvEdit.adapter = writeAdapter
-//        val layoutManager = LinearLayoutManager(mainActivity)
-//        rvEdit.layoutManager = layoutManager
-//        rvEdit.setHasFixedSize(true)
-        fabWrite.setOnClickListener {
-            moveWriteActivity()
-        }
-
-
-
+        viewModel.allWrittenData.observe(viewLifecycleOwner, androidx.lifecycle.Observer { writtenDatas ->
+            writtenDatas?.let { mWriteAdapter.setWrittenData(it)}
+        })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
     fun moveWriteActivity(){
-        val intent = Intent(context, WriteActivity::class.java)
-        startActivityForResult(intent, 12)
-    }
-
-     override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        @Nullable data: Intent?
-    ) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-
-
-
+        val intent = Intent(context, ReadActivity::class.java)
+        startActivity(intent)
     }
 
 

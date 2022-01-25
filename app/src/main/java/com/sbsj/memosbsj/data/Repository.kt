@@ -6,6 +6,7 @@ class Repository(mDatabase: AppDatabase) {
 
     private val dao = mDatabase.dao()
     val allUsers: LiveData<List<WrittenData>> = dao.getAll()
+
     companion object {
         private var sInstance: Repository? = null
         fun getInstance(database: AppDatabase): Repository {
@@ -22,8 +23,17 @@ class Repository(mDatabase: AppDatabase) {
         dao.insert(writtenData)
     }
 
-    suspend fun delete(writtenData: WrittenData) {
-        dao.delete(writtenData)
+    suspend fun delete(order: Int) {
+        dao.delete(order)
     }
+    suspend fun deleteAll(writtenData: WrittenData){
+        dao.deleteAll()
+    }
+    suspend fun read(order: Int) : String {
+        return dao.searchOne(order)
+    }
+//    suspend fun deleteAll(writtenData: WrittenData) {
+//        dao.delete(writtenData)
+//    }
 
 }

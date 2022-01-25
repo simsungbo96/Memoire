@@ -7,10 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.sbsj.memosbsj.data.AppDatabase
 import com.sbsj.memosbsj.data.Repository
 import com.sbsj.memosbsj.data.WrittenData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+ class MainViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
 
     val Repository: Repository =
         Repository(AppDatabase.getDatabase(application, viewModelScope))
@@ -22,13 +25,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         Repository.insert(writtenData)
     }
 
+    fun delete(order: Int) = viewModelScope.launch(Dispatchers.IO) {
+        Repository.delete(order)
+    }
 
     fun deleteAll(writtenData: WrittenData) = viewModelScope.launch(Dispatchers.IO) {
-        Repository.delete(writtenData)
+        Repository.deleteAll(writtenData)
     }
+
+    fun readOneData(order: Int)  = viewModelScope.launch(Dispatchers.IO) {
+        Repository.read(order)
+    }
+
 
     fun getAll(): LiveData<List<WrittenData>>{
         return allWrittenData
     }
+
 
 }

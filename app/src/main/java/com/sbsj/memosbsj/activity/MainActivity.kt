@@ -29,9 +29,7 @@ class MainActivity : AppCompatActivity() {
     private val fragmentEdit by lazy { EditFragment() }
     private val fragmentShare by lazy { ShareFragment() }
     private val fragmentSet by lazy { SetFragment() }
-
     private var backKeyPressedTime : Long =0;
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,11 +38,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavViewCreate()
     }
 
-    override fun onRestart() {
-        super.onRestart()
-
-
-    }
     override fun onBackPressed() {
         exitApp()
     }

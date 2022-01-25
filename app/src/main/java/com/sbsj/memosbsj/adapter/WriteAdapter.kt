@@ -1,9 +1,11 @@
 package com.sbsj.memosbsj.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.sbsj.memosbsj.R
 import com.sbsj.memosbsj.data.WrittenData
@@ -20,22 +22,34 @@ class WriteAdapter internal constructor(context: Context ,var viewModel : MainVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val writtenlistBinding = ItemWrittenlistBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+
         return ViewHolder(writtenlistBinding)
     }
 
     class ViewHolder(private val writtenlistBinding: ItemWrittenlistBinding) :RecyclerView.ViewHolder(writtenlistBinding.root){
+        val delete  = writtenlistBinding.writtenListLlBtnDelete
+
         fun bind(writtenDatas: List<WrittenData>){
             writtenlistBinding.writtenListLlTvTitle.text = writtenDatas[adapterPosition].title
             writtenlistBinding.writtenListLlTvDate.text = writtenDatas[adapterPosition].date
 
         }
+
+
     }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(writtenDatas)
+
+        holder.delete.setOnClickListener {
+           viewModel.delete(writtenDatas[position].order)
+            Log.e("TAG", "position: $position")
+            notifyDataSetChanged()
+        }
     }
     override fun getItemCount() = writtenDatas.size
+
 
     fun setWrittenData(writtenDatas : List<WrittenData>) {
         this.writtenDatas = writtenDatas
