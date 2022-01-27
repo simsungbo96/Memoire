@@ -5,11 +5,13 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import com.sbsj.memosbsj.data.WrittenData
 import com.sbsj.memosbsj.databinding.ActivityReadBinding
 import com.sbsj.memosbsj.viewmodel.MainViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.job
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ReadActivity : AppCompatActivity() {
@@ -22,13 +24,13 @@ class ReadActivity : AppCompatActivity() {
         activityReadBinding.lifecycleOwner =this
         setContentView(activityReadBinding.root)
 
-        viewModel.getData(0)
 
+        viewModel.allWrittenData.observe(this, androidx.lifecycle.Observer { writtenDatas ->
+            writtenDatas?.let { viewModel.readData(10)}
+        })
 
 
     }
 
-    fun readData(writtenDatas : WrittenData) : WrittenData {
-        return writtenDatas
-    }
+
 }

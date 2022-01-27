@@ -47,6 +47,4 @@ class WriteActivity : AppCompatActivity() {
         finish()
     }
 
-
-
 }

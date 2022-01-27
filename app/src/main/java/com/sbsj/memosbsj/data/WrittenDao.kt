@@ -26,7 +26,7 @@ interface WrittenDao {
     fun delete(deleteOrder: Int);
 
     //해당데이터 읽기
-    @Query("SELECT title FROM memo_table where 'order' = :readOrder")
-    fun searchOne(readOrder: Int) : LiveData<WrittenData>
+    @Query("SELECT * FROM memo_table where 'order' = :readOrder")
+    fun searchOne(readOrder: Int) : WrittenData
 
 }
