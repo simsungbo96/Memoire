@@ -57,6 +57,7 @@ class EditFragment : Fragment() {
         binding.editFabWrite.setOnClickListener{
             moveWriteActivity()
         }
+        Log.e("read", "viewModel.Repository : "+ viewModel.repository )
         return binding.root
 
 

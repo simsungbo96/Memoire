@@ -3,6 +3,7 @@ package com.sbsj.memosbsj.activity
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText

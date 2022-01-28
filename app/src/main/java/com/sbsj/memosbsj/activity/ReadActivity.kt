@@ -2,8 +2,10 @@ package com.sbsj.memosbsj.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.sbsj.memosbsj.data.WrittenData
@@ -25,11 +27,9 @@ class ReadActivity : AppCompatActivity() {
         setContentView(activityReadBinding.root)
 
 
-        viewModel.allWrittenData.observe(this, androidx.lifecycle.Observer { writtenDatas ->
-            writtenDatas?.let { viewModel.readData(10)}
-        })
-
-
+        Log.e("read", "viewModel.Repository : "+ viewModel.repository )
+        viewModel.readData(10)
+        viewModel.getReadData.observe(this, Observer { activityReadBinding.readContentTv.text = it.title })
     }
 
 
