@@ -26,6 +26,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.scopes.FragmentScoped
 import java.text.SimpleDateFormat
 import java.util.*
+import android.widget.AdapterView.OnItemClickListener
+
+
+
 
 @FragmentScoped
 class EditFragment : Fragment() {
@@ -35,7 +39,7 @@ class EditFragment : Fragment() {
     // 매번 null 체크를 할 필요 없이 편의성을 위해 바인딩 변수 재 선언
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels<MainViewModel>()
-
+    private var mListener: OnItemClickListener? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,6 +55,7 @@ class EditFragment : Fragment() {
 
         binding.editRvWritten.apply {
             adapter =mWriteAdapter
+
             layoutManager = LinearLayoutManager(requireContext())
         }
 
@@ -75,10 +80,12 @@ class EditFragment : Fragment() {
         _binding = null
     }
     fun moveWriteActivity(){
-        val intent = Intent(context, ReadActivity::class.java)
+        val intent = Intent(context, WriteActivity::class.java)
         startActivity(intent)
     }
 
 
-
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.mListener = listener
+    }
 }

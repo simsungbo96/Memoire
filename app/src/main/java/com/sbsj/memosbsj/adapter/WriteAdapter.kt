@@ -1,20 +1,26 @@
 package com.sbsj.memosbsj.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sbsj.memosbsj.R
+import com.sbsj.memosbsj.activity.ReadActivity
+import com.sbsj.memosbsj.activity.WriteActivity
 import com.sbsj.memosbsj.data.WrittenData
 import com.sbsj.memosbsj.databinding.ItemWrittenlistBinding
 import com.sbsj.memosbsj.viewmodel.MainViewModel
 
-class WriteAdapter internal constructor(context: Context ,var viewModel : MainViewModel) :
+class WriteAdapter internal constructor(var context: Context, var viewModel : MainViewModel) :
     RecyclerView.Adapter<WriteAdapter.ViewHolder>() {
-
+    init {
+        context = context
+    }
 
     private var writtenDatas = emptyList<WrittenData>() // Cached copy of words
 
@@ -28,7 +34,7 @@ class WriteAdapter internal constructor(context: Context ,var viewModel : MainVi
 
     class ViewHolder(private val writtenlistBinding: ItemWrittenlistBinding) :RecyclerView.ViewHolder(writtenlistBinding.root){
         val delete  = writtenlistBinding.writtenListLlBtnDelete
-
+        val LI = writtenlistBinding.writtenListLl
         fun bind(writtenDatas: List<WrittenData>){
             writtenlistBinding.writtenListLlTvTitle.text = writtenDatas[adapterPosition].title
             writtenlistBinding.writtenListLlTvDate.text = writtenDatas[adapterPosition].date
@@ -42,6 +48,10 @@ class WriteAdapter internal constructor(context: Context ,var viewModel : MainVi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(writtenDatas)
 
+        holder.LI.setOnClickListener {
+            val intent = Intent(context, ReadActivity::class.java)
+            context.startActivity(intent)
+        }
         holder.delete.setOnClickListener {
            viewModel.delete(writtenDatas[position].order)
             Log.e("TAG", "position: $position")
@@ -51,10 +61,13 @@ class WriteAdapter internal constructor(context: Context ,var viewModel : MainVi
     override fun getItemCount() = writtenDatas.size
 
 
+
     fun setWrittenData(writtenDatas : List<WrittenData>) {
         this.writtenDatas = writtenDatas
         notifyDataSetChanged()
     }
+
+
 }
 
 //

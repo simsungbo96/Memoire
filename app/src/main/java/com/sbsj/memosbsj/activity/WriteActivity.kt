@@ -33,7 +33,7 @@ class WriteActivity : AppCompatActivity() {
         setContentView(activityWriteBinding.root)
 
          activityWriteBinding.writeWriteBtn.setOnClickListener {
-            backMainActivity();
+            backMainActivity()
         }
         activityWriteBinding.writeCancelBtn.setOnClickListener {
             finish()

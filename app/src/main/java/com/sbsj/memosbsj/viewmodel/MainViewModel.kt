@@ -22,10 +22,8 @@ import javax.inject.Inject
     }
 
     val repository: Repository = Repository.getInstance(AppDatabase.getDatabase(application, viewModelScope))
-        //Repository(AppDatabase.getDatabase(application, viewModelScope))
 
     var allWrittenData: LiveData<List<WrittenData>> = repository.allUsers
-
 
     fun insert(writtenData: WrittenData) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(writtenData)
@@ -38,10 +36,6 @@ import javax.inject.Inject
     fun deleteAll(writtenData: WrittenData) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteAll(writtenData)
     }
-
-//    fun getData(order: Int):LiveData<WrittenData> = viewModelScope.launch(Dispatchers.IO) {
-//        Repository.read(writtenData)
-//    }
 
     fun getAll(): LiveData<List<WrittenData>>{
         return allWrittenData

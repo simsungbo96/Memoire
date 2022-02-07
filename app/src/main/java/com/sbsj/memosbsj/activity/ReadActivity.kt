@@ -28,7 +28,7 @@ class ReadActivity : AppCompatActivity() {
 
 
         Log.e("read", "viewModel.Repository : "+ viewModel.repository )
-        viewModel.readData(10)
+
         viewModel.getReadData.observe(this, Observer { activityReadBinding.readContentTv.text = it.title })
     }
 
