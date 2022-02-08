@@ -4,7 +4,7 @@
         android:title="홈"
         android:icon="@drawable/ic_home_24_black"/>
     <item android:id="@+id/action_edit"
-        android:title="작성"
+        android:title="기록"
         android:icon="@drawable/ic_edit_24_black"/>
     <item android:id="@+id/action_share"
         android:title="공유"

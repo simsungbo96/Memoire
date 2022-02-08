@@ -50,6 +50,7 @@ class WriteAdapter internal constructor(var context: Context, var viewModel : Ma
 
         holder.LI.setOnClickListener {
             val intent = Intent(context, ReadActivity::class.java)
+            intent.putExtra("order",writtenDatas[position].order)
             context.startActivity(intent)
         }
         holder.delete.setOnClickListener {
@@ -70,32 +71,3 @@ class WriteAdapter internal constructor(var context: Context, var viewModel : Ma
 
 }
 
-//
-//class WriteAdapter(private val context: Context) : RecyclerView.Adapter<WriteAdapter.ViewHolder>() {
-//
-//    var datas = mutableListOf<WrittenData>()
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val view = LayoutInflater.from(context).inflate(R.layout.item_written_list,parent,false)
-//        return ViewHolder(view)
-//    }
-//
-//    override fun getItemCount(): Int = datas.size
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.bind(datas[position])
-//    }
-//
-//    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-//
-//        private var txtTitle: TextView = itemView.findViewById(R.id.writtenList_ll_tv_title)
-//        private var txtDate: TextView = itemView.findViewById(R.id.writtenList_ll_tv_date
-//        )
-//
-//
-//        fun bind(item: WrittenData) {
-//            txtTitle.text = item.title
-//            txtDate.text= item.date
-//
-//        }
-//    }
-//}

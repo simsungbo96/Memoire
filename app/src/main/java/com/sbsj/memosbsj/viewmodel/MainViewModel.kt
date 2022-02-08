@@ -17,9 +17,6 @@ import javax.inject.Inject
 @HiltViewModel
  class MainViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
 
-    init {
-
-    }
 
     val repository: Repository = Repository.getInstance(AppDatabase.getDatabase(application, viewModelScope))
 
@@ -33,6 +30,9 @@ import javax.inject.Inject
         repository.delete(order)
     }
 
+    fun update(writtenData: WrittenData) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(writtenData)
+    }
     fun deleteAll(writtenData: WrittenData) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteAll(writtenData)
     }

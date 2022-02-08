@@ -85,7 +85,5 @@ class EditFragment : Fragment() {
     }
 
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        this.mListener = listener
-    }
+
 }

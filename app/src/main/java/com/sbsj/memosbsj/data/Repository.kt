@@ -26,6 +26,9 @@ class Repository(mDatabase: AppDatabase) {
     suspend fun delete(order: Int) {
         dao.delete(order)
     }
+    suspend fun update(writtenData: WrittenData){
+        dao.update(writtenData)
+    }
     suspend fun deleteAll(writtenData: WrittenData){
         dao.deleteAll()
     }

@@ -34,26 +34,66 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/read_title_tv"
+            <ViewSwitcher
+                android:id="@+id/read_title_vs"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:maxLength="15" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/read_title_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:maxLength="15" />
 
-            <TextView
-                android:id="@+id/read_content_tv"
+                <EditText
+                    android:layout_margin="10dp"
+                    android:background="@null"
+                    android:textColor="@color/black"
+                    android:id="@+id/read_title_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:maxLength="15" />
+
+
+            </ViewSwitcher>
+
+            <ViewSwitcher
+                android:id="@+id/read_content_vs"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:gravity="top|left"
-                android:lines="20"
-                android:maxLength="300"
-                android:scrollbars="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/write_title_et" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:id="@+id/read_content_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:gravity="top|left"
+                    android:lines="20"
+                    android:maxLength="300"
+                    android:scrollbars="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/write_title_et" />
+                <EditText
+                    android:layout_margin="10dp"
+                    android:background="@null"
+                    android:textColor="@color/black"
+                    android:id="@+id/read_content_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:gravity="top|left"
+                    android:lines="20"
+                    android:maxLength="300"
+                    android:scrollbars="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/write_title_et" />
+            </ViewSwitcher>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,15 +105,15 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2">
+                    android:layout_weight="0.15">
 
                 </Space>
 
                 <Button
-                    android:id="@+id/write_cancel_btn"
+                    android:id="@+id/read_cancel_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
+                    android:layout_weight="0.45"
                     android:text="취소" />
 
                 <Space
@@ -84,16 +124,30 @@
                 </Space>
 
                 <Button
-                    android:id="@+id/write_write_btn"
+                    android:id="@+id/read_modify_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
+                    android:layout_weight="0.45"
+                    android:text="수정" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.15">
+
+                </Space>
+
+                <Button
+                    android:id="@+id/read_delete_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.45"
                     android:text="삭제" />
 
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2">
+                    android:layout_weight="0.15">
 
                 </Space>
             </LinearLayout>

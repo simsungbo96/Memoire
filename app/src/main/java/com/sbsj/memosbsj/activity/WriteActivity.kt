@@ -44,7 +44,7 @@ class WriteActivity : AppCompatActivity() {
         var nowDate = System.currentTimeMillis()
         val convertNowDate = Date(nowDate)
         val printDate = SimpleDateFormat("yy년 MM월 dd일")
-        viewModel.insert(WrittenData(0, activityWriteBinding.writeTitleEt.text.toString(),printDate.format(convertNowDate)))
+        viewModel.insert(WrittenData(0, activityWriteBinding.writeTitleEt.text.toString(),activityWriteBinding.writeContentEt.text.toString(),printDate.format(convertNowDate)))
         finish()
     }
 

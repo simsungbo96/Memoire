@@ -64,15 +64,14 @@ class MainActivity : AppCompatActivity() {
     }
     /*바텀 네비게이션뷰 화면전환하는 함수 */
     private fun changeFragment(fragment: Fragment) {
-        supportFragmentManager .beginTransaction() .replace(R.id.main_frameLayout, fragment) .commit()
+        supportFragmentManager.beginTransaction().replace(R.id.main_frameLayout, fragment) .commit()
     }
-
     /*메인액티비티에서 뒤로가기 두번하면 앱을 종료하는 함수 */
     private fun exitApp(){
         if (System.currentTimeMillis() > backKeyPressedTime + 2500){
             backKeyPressedTime =System.currentTimeMillis()
             Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG).show();
-            return;
+            return
         }
         if (System.currentTimeMillis() <= backKeyPressedTime + 2500){
             finishAffinity();

@@ -8,5 +8,6 @@ data class WrittenData(
     @PrimaryKey(autoGenerate = true)
     var order: Int,
     var title: String?,
+    var content : String?,
     var date: String?
 )
