@@ -35,9 +35,9 @@ class ReadActivity : AppCompatActivity() {
 
         activityReadBinding.readTitleVs.setOnClickListener {
             switchEditView(activityReadBinding.readTitleVs , activityReadBinding.readTitleTv , activityReadBinding.readTitleEdit)
-                      activityReadBinding.readTitleVs.onFocusChangeListener =
+                      activityReadBinding.readTitleEdit.onFocusChangeListener =
                 View.OnFocusChangeListener { p0, hasFocus ->
-                    if(p0.isFocusable){
+                    if(hasFocus){
                         switchEditView(activityReadBinding.readTitleVs , activityReadBinding.readTitleTv , activityReadBinding.readTitleEdit)
                         Log.e("setOnFocusChangeListener", "focus ", )
                     } else{
@@ -50,9 +50,9 @@ class ReadActivity : AppCompatActivity() {
 
         activityReadBinding.readContentVs.setOnClickListener {
             switchEditView(activityReadBinding.readContentVs , activityReadBinding.readContentTv , activityReadBinding.readContentEt)
-            activityReadBinding.readContentVs.onFocusChangeListener =
+            activityReadBinding.readContentEt.onFocusChangeListener =
                 View.OnFocusChangeListener { p0, hasFocus ->
-                    if(p0.isFocusable){
+                    if(hasFocus){
                         switchEditView(activityReadBinding.readContentVs , activityReadBinding.readContentTv , activityReadBinding.readContentEt)
                         Log.e("setOnFocusChangeListener", "focus ", )
                     } else{
