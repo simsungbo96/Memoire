@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-fun Activity.makeDate(): String {
+fun makeDate(): String {
     var nowDate = System.currentTimeMillis()
     val convertNowDate = Date(nowDate)
     val printDate = SimpleDateFormat("yy년 MM월 dd일")
