@@ -4,23 +4,30 @@ package com.sbsj.memosbsj.activity
 
 
 import HomeFragment
+import android.app.Service
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.sbsj.memosbsj.R
+import com.sbsj.memosbsj.databinding.ActivityReadBinding
+import com.sbsj.memosbsj.databinding.FragmentHomeBinding
 import com.sbsj.memosbsj.fragment.EditFragment
 
 import com.sbsj.memosbsj.fragment.SetFragment
 import com.sbsj.memosbsj.fragment.ShareFragment
+import com.sbsj.memosbsj.viewmodel.MainViewModel
 
 
 class MainActivity : AppCompatActivity() {
+
 
 
     lateinit var bottomNavigationView : BottomNavigationView
@@ -36,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottomNavViewCreate()
+
 
     }
 

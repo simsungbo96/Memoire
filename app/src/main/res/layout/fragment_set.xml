@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.SetFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
+
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="150dp">
+
+        </Space>
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch2"
+            android:layout_width="271dp"
+            android:layout_height="114dp"
+            android:text="Quick Motion"
+            android:padding="48dp"
+            android:textSize="14dp"
+            android:fontFamily="sans-serif-black"
+            android:textOff="퀵 모션 OFF"
+            android:textOn="퀵 모션 ON"
+            app:switchMinWidth="80dp"
+            android:thumb="@android:drawable/ic_menu_always_landscape_portrait"
+            app:thumbTint="#F7050810"
+
+           />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch10"
+            android:layout_width="271dp"
+            android:layout_height="114dp"
+            android:fontFamily="sans-serif-black"
+            android:padding="48dp"
+            android:text="Quick Motion"
+            android:textOff="퀵 모션 OFF"
+            android:textOn="퀵 모션 ON"
+            android:textSize="14dp"
+            android:thumb="@android:drawable/ic_menu_always_landscape_portrait"
+            app:switchMinWidth="80dp"
+            app:thumbTint="#F7050810"
+
+            />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch11"
+            android:layout_width="271dp"
+            android:layout_height="114dp"
+            android:fontFamily="sans-serif-black"
+            android:padding="48dp"
+            android:text="Quick Motion"
+            android:textOff="퀵 모션 OFF"
+            android:textOn="퀵 모션 ON"
+            android:textSize="14dp"
+            android:thumb="@android:drawable/ic_menu_always_landscape_portrait"
+
+            app:switchMinWidth="80dp"
+            app:thumbTint="#F7050810"
+
+            />
+
+    </LinearLayout>
 </FrameLayout>

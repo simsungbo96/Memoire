@@ -24,6 +24,9 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:background="@drawable/square_title_list_box"
                 android:id="@+id/write_title_et"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -34,6 +37,9 @@
                 android:maxLength="15" />
 
             <EditText
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:background="@drawable/square_title_list_box"
                 android:id="@+id/write_content_et"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"

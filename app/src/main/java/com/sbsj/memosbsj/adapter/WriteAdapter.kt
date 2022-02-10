@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sbsj.memosbsj.R
@@ -54,7 +55,21 @@ class WriteAdapter internal constructor(var context: Context, var viewModel : Ma
             context.startActivity(intent)
         }
         holder.delete.setOnClickListener {
-           viewModel.delete(writtenDatas[position].order)
+
+            AlertDialog.Builder(context)
+                .setTitle("삭제 알림")
+                .setMessage("정말로 삭제하시겠습니까?\n삭제를 할 경우에 기존데이터는 \n복구 할 수 없습니다.")
+                .setPositiveButton(
+                    "확인"
+                ) { dialog, which ->
+                    viewModel.delete(writtenDatas[position].order)
+                }
+                .setNegativeButton(
+                    "취소"
+                ) { dialog, which -> }
+                .create()
+                .show()
+
             Log.e("TAG", "position: $position")
             notifyDataSetChanged()
         }

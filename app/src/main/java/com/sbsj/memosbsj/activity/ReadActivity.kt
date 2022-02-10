@@ -42,15 +42,9 @@ class ReadActivity : AppCompatActivity() {
                 activityReadBinding.readTitleTv,
                 activityReadBinding.readTitleEdit
             )
-            activityReadBinding.readTitleEdit.requestFocus()
-            val imm: InputMethodManager =
-                getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(activityReadBinding.readTitleEdit, 0)
         }
-
         activityReadBinding.readTitleEdit.setOnFocusChangeListener { v, b ->
             if (!b) {
-
                 switchTextView(
                     activityReadBinding.readTitleVs,
                     activityReadBinding.readTitleEdit,
@@ -65,15 +59,10 @@ class ReadActivity : AppCompatActivity() {
                 activityReadBinding.readContentTv,
                 activityReadBinding.readContentEt
             )
-            activityReadBinding.readContentEt.requestFocus()
-            val imm: InputMethodManager =
-                getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(activityReadBinding.readContentEt, 0)
         }
 
         activityReadBinding.readContentEt.setOnFocusChangeListener { v, b ->
             if (!b) {
-
                 switchTextView(
                     activityReadBinding.readContentVs,
                     activityReadBinding.readContentEt,
@@ -103,14 +92,11 @@ class ReadActivity : AppCompatActivity() {
                 .create()
                 .show()
         }
-        activityReadBinding.readModifyBtn.setOnClickListener { v->
-
+        activityReadBinding.readModifyBtn.setOnClickListener { v ->
             activityReadBinding.root.clearFocus()
             val imm: InputMethodManager =
                 getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(v.windowToken, 0)
-
-
             AlertDialog.Builder(this)
                 .setTitle("수정 알림")
                 .setMessage("정말로 수정하시겠습니까?\n수정을 할 경우에 기존데이터는 \n복구 할 수 없습니다.")
@@ -134,18 +120,28 @@ class ReadActivity : AppCompatActivity() {
                 .show()
         }
 
+        activityReadBinding.readAllViewCl.setOnClickListener {
+            activityReadBinding.root.clearFocus()
+            val imm: InputMethodManager =
+                getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
 
     }
 
     private fun switchEditView(viewSwitcher: ViewSwitcher, textView: TextView, editText: EditText) {
         editText.setText(textView.text)
-        viewSwitcher.showNext()
+        viewSwitcher.showNext()  /*뷰 스위처의 하위뷰 호출*/
+        editText.requestFocus()  /*포커스 얻음*/
+        editText.setSelection(editText.length()); //커서를 끝에 위치!
+        val imm: InputMethodManager =
+            getSystemService(Service.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(editText, 0) /*키패드 올림*/
     }
 
     private fun switchTextView(viewSwitcher: ViewSwitcher, editText: EditText, textView: TextView) {
         textView.text = editText.text
         viewSwitcher.showPrevious()
-
     }
 
 }

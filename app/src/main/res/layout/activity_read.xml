@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -12,6 +13,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
+    android:id="@+id/read_allView_cl"
     android:layout_height="wrap_content"
     tools:context=".activity.ReadActivity">
 
@@ -40,7 +42,9 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:background="@drawable/square_title_list_box"
                     android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:textColor="@color/black"
                     android:id="@+id/read_title_tv"
                     android:layout_width="match_parent"
@@ -50,7 +54,8 @@
 
                 <EditText
                     android:layout_margin="10dp"
-                    android:background="@null"
+                    android:padding="10dp"
+                    android:background="@drawable/square_title_list_box"
                     android:textColor="@color/black"
                     android:id="@+id/read_title_edit"
                     android:layout_width="match_parent"
@@ -66,7 +71,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:background="@drawable/square_title_list_box"
                     android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:textColor="@color/black"
                     android:id="@+id/read_content_tv"
                     android:layout_width="match_parent"
@@ -79,8 +86,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/write_title_et" />
                 <EditText
+                    android:background="@drawable/square_title_list_box"
                     android:layout_margin="10dp"
-                    android:background="@null"
+                    android:padding="10dp"
                     android:textColor="@color/black"
                     android:id="@+id/read_content_et"
                     android:layout_width="match_parent"
@@ -141,7 +149,6 @@
                 </Space>
 
                 <Button
-                    android:focusableInTouchMode="true"
                     android:id="@+id/read_delete_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
