@@ -111,12 +111,9 @@ class HomeFragment : Fragment() {
     }
 
     fun post(apiUrl: String, requestHeaders: Map<String, String>, text: String?): String {
-
-
         val con: HttpURLConnection? = connect(apiUrl)
         val postParams =
             "source=ko&target=en&text=$text" //원본언어: 한국어 (ko) -> 목적언어: 영어 (en)
-
         return try {
             con!!.requestMethod = "POST"
             for ((key, value) in requestHeaders.entries) {

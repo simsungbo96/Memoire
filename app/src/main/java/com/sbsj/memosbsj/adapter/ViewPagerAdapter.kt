@@ -1,16 +1,11 @@
 package com.sbsj.memosbsj.adapter
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CalendarView
-import android.widget.RelativeLayout
+
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.sbsj.memosbsj.R
 import com.sbsj.memosbsj.data.DataPage
-import com.sbsj.memosbsj.adapter.ViewPagerAdapter.ViewHolderPage
-
 
 
 
@@ -28,7 +23,7 @@ class ViewPagerAdapter(dataList: ArrayList<DataPage>) : RecyclerView.Adapter<Vie
     }
     inner class ViewHolderPage(parent: ViewGroup) : RecyclerView.ViewHolder
         (LayoutInflater.from(parent.context).inflate(R.layout.item_viewpager, parent, false)){
-            val title = itemView.findViewById<TextView>(R.id.tv_title)
+            val title: TextView = itemView.findViewById<TextView>(R.id.tv_title)
 
 
     }

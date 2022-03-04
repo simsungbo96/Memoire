@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     private val fragmentEdit by lazy { EditFragment() }
     private val fragmentShare by lazy { ShareFragment() }
     private val fragmentSet by lazy { SetFragment() }
-    private var backKeyPressedTime : Long =0;
+    private var backKeyPressedTime : Long =0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

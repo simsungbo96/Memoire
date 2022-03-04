@@ -162,6 +162,12 @@
 
                 </Space>
             </LinearLayout>
+            <Button
+                android:id="@+id/send_sms"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="해당 내용 문자로 보내기" />
 
         </LinearLayout>
 
